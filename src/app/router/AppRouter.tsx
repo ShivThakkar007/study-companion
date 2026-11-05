@@ -1,4 +1,4 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, NavLink } from 'react-router-dom'
 import {
   Activity,
   BookOpen,
@@ -17,6 +17,15 @@ import {
   X,
 } from 'lucide-react'
 import { useState } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import {
+  AuthPage,
+  ProfilePage,
+  RecoverPage,
+  RecoveryPasswordPage,
+} from '../../features/auth/AuthPages'
+import { AuthProvider } from '../../features/auth/AuthProvider'
+import { useAuth } from '../../features/auth/useAuth'
 
 const navigation = [
   { label: 'Overview', path: '/', icon: LayoutDashboard },
@@ -162,8 +171,38 @@ function Sidebar({
 }
 
 function Shell() {
+  const { user, loading, error } = useAuth()
+  const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
+  if (loading)
+    return (
+      <div className="grid min-h-screen place-items-center text-sm text-slate-500">
+        Restoring your session…
+      </div>
+    )
+  if (error)
+    return (
+      <div
+        className="grid min-h-screen place-items-center p-6 text-sm text-red-700"
+        role="alert"
+      >
+        Could not restore session: {error}
+      </div>
+    )
+  if (!user)
+    return (
+      <Routes>
+        <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/recover" element={<RecoverPage />} />
+        <Route path="/password-update" element={<RecoveryPasswordPage />} />
+        <Route
+          path="*"
+          element={<Navigate to="/login" replace state={{ from: location }} />}
+        />
+      </Routes>
+    )
   return (
     <div className="min-h-screen bg-[#f8f9fc] text-slate-900">
       <div className="relative flex min-h-screen">
@@ -206,7 +245,8 @@ function Shell() {
                 <CircleHelp size={18} />
               </button>
               <span className="mx-1 h-7 border-l border-slate-200" />
-              <button
+              <NavLink
+                to="/settings"
                 className="flex items-center gap-2 rounded-full p-1 pr-2 transition hover:bg-slate-50"
                 aria-label="User profile"
               >
@@ -216,11 +256,12 @@ function Shell() {
                 <span className="hidden text-sm font-medium text-slate-700 sm:inline">
                   Study buddy
                 </span>
-              </button>
+              </NavLink>
             </div>
           </header>
           <main className="flex-1">
             <Routes>
+              <Route path="/settings" element={<ProfilePage />} />
               {navigation.map(({ label, path }) => (
                 <Route
                   key={path}
@@ -244,7 +285,15 @@ function Shell() {
 export default function AppRouter() {
   return (
     <BrowserRouter>
-      <Shell />
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<AuthPage mode="login" />} />
+          <Route path="/signup" element={<AuthPage mode="signup" />} />
+          <Route path="/recover" element={<RecoverPage />} />
+          <Route path="/password-update" element={<RecoveryPasswordPage />} />
+          <Route path="*" element={<Shell />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
