@@ -1,73 +1,121 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Study Companion
 
-Currently, two official plugins are available:
+A personal study companion designed to help students improve concentration, build consistent study habits, track learning progress, and stay accountable.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+Study Companion aims to provide an integrated environment for focused learning and academic productivity.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Planned Features
 
-## Expanding the ESLint configuration
+- **Focus Studio:** Manual and smart focus sessions.
+- **Subject Management:** Organize subjects, topics, and learning objectives.
+- **Performance Center:** Track study sessions, focus patterns, and progress.
+- **Virtual Study Rooms:** Study alongside friends in synchronized sessions.
+- **Learning Community:** Share achievements, notes, and learning resources.
+- **Mental Reset:** Relaxation activities and interactive experiences.
+- **Study Companion Character:** Contextual encouragement and feedback.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technology Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Category | Technology |
+|---|---|
+| Frontend | React + TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| Server State | TanStack Query |
+| Client State | Zustand |
+| Backend | Supabase |
+| Database | PostgreSQL |
+| Forms | React Hook Form + Zod |
+| Charts | Recharts |
+| Animations | Motion |
+| Icons | Lucide React |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- Node.js
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ShivThakkar007/study-companion.git
+cd study-companion
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### Environment Configuration
+
+Create a `.env` file in the project root.
+
+Use `.env.example` as a reference:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+```
+
+Never commit your actual `.env` file or expose Supabase secret/service-role keys.
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Code Quality
+
+```bash
+npm run lint
+npm run format
+npm run format:check
+```
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── providers/
+│   └── router/
+├── components/
+│   └── ui/
+├── features/
+├── hooks/
+├── lib/
+├── types/
+├── utils/
+├── assets/
+├── App.tsx
+├── index.css
+└── main.tsx
+```
+
+## Development Status
+
+The project is currently in its initial infrastructure and setup phase.
+
+Features will be implemented incrementally through development sprints.
+
+## License
+
+Not yet licensed.
