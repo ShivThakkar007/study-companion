@@ -26,6 +26,7 @@ import {
 } from '../../features/auth/AuthPages'
 import { AuthProvider } from '../../features/auth/AuthProvider'
 import { useAuth } from '../../features/auth/useAuth'
+import { SubjectDetailPage, SubjectsPage } from '../../features/subjects/SubjectPages'
 
 const navigation = [
   { label: 'Overview', path: '/', icon: LayoutDashboard },
@@ -261,6 +262,8 @@ function Shell() {
           </header>
           <main className="flex-1">
             <Routes>
+              <Route path="/subjects" element={<SubjectsPage />} />
+              <Route path="/subjects/:id" element={<SubjectDetailPage />} />
               <Route path="/settings" element={<ProfilePage />} />
               {navigation.map(({ label, path }) => (
                 <Route
