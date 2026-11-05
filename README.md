@@ -1,4 +1,3 @@
-
 # Study Companion
 
 A personal study companion designed to help students improve concentration, build consistent study habits, track learning progress, and stay accountable.
@@ -19,20 +18,20 @@ Study Companion aims to provide an integrated environment for focused learning a
 
 ## Technology Stack
 
-| Category | Technology |
-|---|---|
-| Frontend | React + TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS |
-| Routing | React Router |
-| Server State | TanStack Query |
-| Client State | Zustand |
-| Backend | Supabase |
-| Database | PostgreSQL |
-| Forms | React Hook Form + Zod |
-| Charts | Recharts |
-| Animations | Motion |
-| Icons | Lucide React |
+| Category     | Technology            |
+| ------------ | --------------------- |
+| Frontend     | React + TypeScript    |
+| Build Tool   | Vite                  |
+| Styling      | Tailwind CSS          |
+| Routing      | React Router          |
+| Server State | TanStack Query        |
+| Client State | Zustand               |
+| Backend      | Supabase              |
+| Database     | PostgreSQL            |
+| Forms        | React Hook Form + Zod |
+| Charts       | Recharts              |
+| Animations   | Motion                |
+| Icons        | Lucide React          |
 
 ## Getting Started
 
